@@ -99,6 +99,15 @@ export default function Book() {
         flippingTime={600}
         disableFlipByClick={false}
         onFlip={handleFlip}
+        startPage={0}
+        usePortrait={false}
+        startZIndex={0}
+        maxShadowOpacity={0.5}
+        useMouseEvents={true}
+        style={{}}
+        autoSize={false}
+        swipeDistance={30}
+        showPageCorners={true}
         className=""
       >
         {pages.map((p, i) => (

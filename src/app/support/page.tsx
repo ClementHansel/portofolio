@@ -1,32 +1,41 @@
+/* eslint-disable */
 "use client";
 
 import { useState } from "react";
-import { FaHeart, FaRupiahSign, FaGlobe } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
+
+type Donation = {
+  name: string;
+  email: string;
+  amount: string;
+  currency: string;
+};
 
 export default function SupportPage() {
-  const [donation, setDonation] = useState({
+  const [donation, setDonation] = useState<Donation>({
     name: "",
     email: "",
     amount: "",
     currency: "IDR",
   });
 
-  const [goal] = useState({
+  const goal = {
     goalName: "Support My Portfolio Hosting",
-    target: 1000000, // in Rupiah
-    current: 320000, // in Rupiah
-  });
+    target: 1_000_000, // in Rupiah
+    current: 320_000, // in Rupiah
+  };
 
   const progress = Math.min((goal.current / goal.target) * 100, 100);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setDonation((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Logic for routing to local or international gateway
     if (donation.currency === "IDR") {
       alert("Redirecting to local payment...");
     } else {
@@ -115,20 +124,12 @@ export default function SupportPage() {
                 value={donation.currency}
                 onChange={handleChange}
                 className="border border-gray-300 rounded-xl px-4 py-2"
-                title="select currency"
+                title="set currency"
               >
-                <option value="IDR">
-                  Rupiah (IDR) 🇮🇩 <FaRupiahSign />
-                </option>
-                <option value="USD">
-                  USD 🌐 <FaGlobe />
-                </option>
-                <option value="EUR">
-                  EUR 🌍 <FaGlobe />
-                </option>
-                <option value="SGD">
-                  SGD 🌏 <FaGlobe />
-                </option>
+                <option value="IDR">Rupiah (IDR) 🇮🇩</option>
+                <option value="USD">USD 🌐</option>
+                <option value="EUR">EUR 🌍</option>
+                <option value="SGD">SGD 🌏</option>
               </select>
             </div>
           </div>

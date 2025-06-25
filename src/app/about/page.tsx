@@ -30,8 +30,8 @@ export default function AboutPage() {
           Malaysia, and Indonesia, I built a deep foundation in leadership,
           operations, and adaptability. These experiences laid the groundwork
           for my ability to manage high-stakes projects and cross-functional
-          teams—skills that I’ve carried into my work as a Software Engineer and
-          IoT Project Manager.
+          teams. Skills that I’ve carried into my work as a Software Engineer
+          and IoT Project Manager.
         </p>
       </section>
 

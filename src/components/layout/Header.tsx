@@ -9,6 +9,12 @@ export default function Header() {
         </Link>
       </h1>
       <nav className="space-x-4">
+        <Link href="/products" className="hover:underline">
+          Products
+        </Link>
+        <Link href="/blog" className="hover:underline">
+          Blog
+        </Link>
         <Link href="/documentation" className="hover:underline">
           Documentation
         </Link>
@@ -20,6 +26,12 @@ export default function Header() {
         </Link>
         <Link href="/contact" className="hover:underline">
           Contact
+        </Link>
+        <Link href="/support" className="hover:underline">
+          Support
+        </Link>
+        <Link href="/signin" className="hover:underline">
+          Sign in
         </Link>
       </nav>
     </header>

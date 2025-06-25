@@ -1,0 +1,5 @@
+export const about: string = `
+I’m a Full-Stack Developer and aspiring Senior Software Engineer with a strong focus on IoT systems and smart technologies. I design and deploy scalable, real-world solutions such as piezoelectric and LiDAR-based sensors, structural health monitoring systems, and smart coastal buoys. Currently improving safety, data visibility, and operational efficiency in both industrial and smart city contexts. At PT. Karya Gemilang Utama, I lead cross-functional teams and manage end-to-end IoT deployments, ensuring seamless integration from hardware to cloud.
+
+My core tech stack includes TypeScript, Next.js, React, Express.js, Tailwind CSS, PostgreSQL, and MongoDB, with hands-on implementation of IoT protocols like LoRa and MQTT. I specialize in bridging technical execution with project leadership, translating complex requirements into impactful solutions. Looking ahead, I aim to grow into a Senior Engineering role, deepening my expertise in distributed IoT architecture, edge computing, and AI-driven solutions. Continuously learning to drive innovation in the evolving world of connected technology.
+`;

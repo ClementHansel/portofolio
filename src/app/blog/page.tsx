@@ -116,9 +116,9 @@ export default function BlogPage() {
       <section className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
         <p className="text-lg text-gray-700 leading-relaxed">
-          Here you'll find my latest posts from across the web — from LinkedIn,
-          YouTube, and more. Posts are automatically fetched, sorted by date,
-          and you can filter by date, source, or tags.
+          Here you&apos;ll find my latest posts from across the web — from
+          LinkedIn, YouTube, and more. Posts are automatically fetched, sorted
+          by date, and you can filter by date, source, or tags.
         </p>
       </section>
 
@@ -127,6 +127,7 @@ export default function BlogPage() {
         <select
           onChange={(e) => setFilter({ ...filter, dateRange: e.target.value })}
           className="px-3 py-2 border rounded"
+          title="filter date"
         >
           <option value="all">All dates</option>
           <option value="today">Today</option>
@@ -139,6 +140,7 @@ export default function BlogPage() {
         <select
           onChange={(e) => setFilter({ ...filter, source: e.target.value })}
           className="px-3 py-2 border rounded"
+          title="filter source"
         >
           {allSources.map((s) => (
             <option key={s}>{s}</option>
@@ -148,6 +150,7 @@ export default function BlogPage() {
         <select
           onChange={(e) => setFilter({ ...filter, tag: e.target.value })}
           className="px-3 py-2 border rounded"
+          title="filter tag"
         >
           {allTags.map((t) => (
             <option key={t}>{t}</option>

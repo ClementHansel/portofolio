@@ -1,12 +1,13 @@
 "use client";
 
-import BookPage from "../BookPage";
 import { motion } from "framer-motion";
 import { certifications } from "@/data/CV/certifications"; // Adjust path if different
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function CertificationPage() {
+  const Page = useResponsiveBookPage();
   return (
-    <BookPage>
+    <Page>
       <motion.div
         className="h-full w-full flex flex-col px-4 py-2 overflow-y-auto text-sm"
         initial={{ opacity: 0, y: 20 }}
@@ -29,6 +30,6 @@ export default function CertificationPage() {
           ))}
         </ul>
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

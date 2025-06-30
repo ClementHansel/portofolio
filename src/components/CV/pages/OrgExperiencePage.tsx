@@ -1,12 +1,13 @@
 "use client";
 
-import BookPage from "../BookPage";
 import { motion } from "framer-motion";
 import { organizationExperience } from "@/data/CV/organization";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function OrgExperiencePage() {
+  const Page = useResponsiveBookPage();
   return (
-    <BookPage>
+    <Page>
       <motion.div
         className="h-full w-full flex flex-col px-4 py-2 overflow-y-auto text-sm"
         initial={{ opacity: 0, y: 20 }}
@@ -39,6 +40,6 @@ export default function OrgExperiencePage() {
           ))}
         </ul>
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

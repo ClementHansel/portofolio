@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import BookPage from "../BookPage";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function BackCoverPage() {
+  const Page = useResponsiveBookPage();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
@@ -16,7 +17,7 @@ export default function BackCoverPage() {
   };
 
   return (
-    <BookPage>
+    <Page>
       <div
         className="relative h-full w-full bg-no-repeat bg-cover bg-center shadow-[inset_0_0_15px_rgba(0,0,0,0.1)] border border-black overflow-hidden"
         style={{
@@ -36,7 +37,7 @@ export default function BackCoverPage() {
             {/* Section 1: Top Image */}
             <div>
               <Image
-                src="/assets/images/Hansel1.jpg"
+                src="/assets/images/profile/Hansel1.jpg"
                 alt="Hansel Back Cover"
                 width={500}
                 height={100}
@@ -93,6 +94,6 @@ export default function BackCoverPage() {
           </motion.div>
         </div>
       </div>
-    </BookPage>
+    </Page>
   );
 }

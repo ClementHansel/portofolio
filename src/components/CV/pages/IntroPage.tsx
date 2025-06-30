@@ -1,6 +1,5 @@
 "use client";
 
-import BookPage from "../BookPage";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,13 +13,14 @@ import {
 } from "react-icons/fa";
 import { about } from "@/data/CV/about";
 import { motion } from "framer-motion";
-import { Typewriter } from "react-simple-typewriter";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function IntroPage() {
+  const Page = useResponsiveBookPage();
   return (
-    <BookPage>
+    <Page>
       <motion.div
-        className="h-full w-full flex flex-col items-center justify-start text-center space-y-4 bg-gradient-to-b from-slate-100 to-slate-200 bg-[url('/assets/textures/paper-texture.png')] bg-cover"
+        className="h-full w-full flex flex-col items-center justify-start text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.4 }}
@@ -32,13 +32,13 @@ export default function IntroPage() {
             boxShadow: "0 0 12px rgba(59,130,246,0.5)",
           }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="w-40 h-40 mt-20 rounded-full overflow-hidden border-2 border-blue-300 shadow-md"
+          className="w-40 h-40 mt-20 rounded-full overflow-hidden border-2 border-blue-300 shadow-md flex-shrink-0 aspect-square"
         >
           <Image
-            src="/assets/images/profile.jpg"
+            src="/assets/images/profile/profile.jpg"
             alt="Clement Hansel"
-            width={200}
-            height={200}
+            width={160}
+            height={160}
             className="object-cover w-full h-full"
           />
         </motion.div>
@@ -132,16 +132,9 @@ export default function IntroPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
         >
-          <Typewriter
-            words={[about]}
-            typeSpeed={25}
-            deleteSpeed={0}
-            delaySpeed={1000}
-            cursor
-            cursorStyle="|"
-          />
+          {about}
         </motion.div>
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

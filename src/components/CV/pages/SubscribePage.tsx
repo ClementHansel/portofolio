@@ -1,10 +1,11 @@
 "use client";
 
-import BookPage from "../BookPage";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function SubscribePage() {
+  const Page = useResponsiveBookPage();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
@@ -15,7 +16,7 @@ export default function SubscribePage() {
   };
 
   return (
-    <BookPage>
+    <Page>
       <motion.div
         className="h-full w-full flex flex-col items-center justify-center px-4 py-2 text-center text-sm"
         initial={{ opacity: 0, y: 20 }}
@@ -46,6 +47,6 @@ export default function SubscribePage() {
           </button>
         </div>
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

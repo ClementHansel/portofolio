@@ -1,12 +1,13 @@
 "use client";
 
-import BookPage from "../BookPage";
 import { otherExperience } from "@/data/CV/workExperience";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 import { motion } from "framer-motion";
 
 export default function WorkExperiencePage2() {
+  const Page = useResponsiveBookPage();
   return (
-    <BookPage>
+    <Page>
       <motion.div
         className="h-full w-full flex flex-col px-4 py-2 overflow-y-auto text-sm"
         initial={{ opacity: 0, y: 20 }}
@@ -34,6 +35,6 @@ export default function WorkExperiencePage2() {
           </div>
         ))}
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import BookPage from "../BookPage";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function ContactPage() {
+  const Page = useResponsiveBookPage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +35,7 @@ export default function ContactPage() {
   };
 
   return (
-    <BookPage>
+    <Page>
       <motion.div
         className="h-full w-full flex flex-col items-center justify-start px-4 py-2 text-center text-sm overflow-y-auto"
         initial={{ opacity: 0, y: 20 }}
@@ -151,6 +152,6 @@ export default function ContactPage() {
           </div>
         </form>
       </motion.div>
-    </BookPage>
+    </Page>
   );
 }

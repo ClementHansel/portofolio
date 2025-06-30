@@ -1,12 +1,13 @@
 "use client";
 
-import BookPage from "../BookPage";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import useResponsiveBookPage from "@/hooks/useResponsiveBookPage";
 
 export default function CoverPage() {
+  const Page = useResponsiveBookPage();
   return (
-    <BookPage>
+    <Page>
       {/* 3D book shadow frame */}
       <div
         className="relative h-full w-full bg-cover bg-no-repeat shadow-[inset_0_0_15px_rgba(0,0,0,0.1)] border border-black overflow-hidden flex flex-col justify-center items-center text-center"
@@ -19,7 +20,7 @@ export default function CoverPage() {
         {/* Semi-circle profile image */}
         <div className="w-40 h-40 overflow-hidden shadow-lg mt-4 mb-6 border border-yellow-600">
           <Image
-            src="/assets/images/profile.jpg"
+            src="/assets/images/profile/profile.jpg"
             alt="Clement Hansel"
             width={160}
             height={160}
@@ -46,6 +47,6 @@ export default function CoverPage() {
           <br />— Rachel Anders —
         </motion.p>
       </div>
-    </BookPage>
+    </Page>
   );
 }

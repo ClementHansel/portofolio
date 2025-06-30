@@ -24,3 +24,49 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes neon-glow {
+  0% {
+    box-shadow: 0 0 10px #f0f, 0 0 20px #0ff, 0 0 30px #ff0;
+  }
+  25% {
+    box-shadow: 0 0 10px #0ff, 0 0 20px #f0f, 0 0 30px #0f0;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff0, 0 0 20px #0f0, 0 0 30px #f0f;
+  }
+  75% {
+    box-shadow: 0 0 10px #0f0, 0 0 20px #ff0, 0 0 30px #0ff;
+  }
+  100% {
+    box-shadow: 0 0 10px #f0f, 0 0 20px #0ff, 0 0 30px #ff0;
+  }
+}
+
+.neon-btn {
+  @apply px-6 py-3 text-white rounded-lg font-semibold border border-white bg-black;
+  background: linear-gradient(145deg, #111, #1b1b1b);
+  box-shadow: inset 2px 2px 5px #000, inset -2px -2px 5px #222;
+  animation: neon-glow 3s infinite ease-in-out;
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+.neon-btn:hover {
+  transform: translateY(-2px);
+  background: #111;
+}
+
+.hover-delay-group .hover-delay-enter {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hover-delay-group:hover .hover-delay-enter {
+  opacity: 1;
+  transition-delay: 100ms;
+}
+
+.hover-delay-group:not(:hover) .hover-delay-enter {
+  opacity: 0;
+  transition-delay: 300ms;
+}

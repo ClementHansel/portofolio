@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FaDownload, FaPrint } from "react-icons/fa";
-import Book from "@/components/CV/Book";
+import CVBookWrapper from "@/components/CV/CVBookWrapper";
 
 export default function CVPage() {
   return (
@@ -21,10 +21,10 @@ export default function CVPage() {
         </section>
 
         {/* Action Buttons */}
-        <section className="flex justify-center gap-6">
+        <section className="flex flex-wrap justify-center gap-6">
           {/* View Printable */}
           <Link
-            href="https://drive.google.com/file/d/1nGINbIQsHBjGnho9WyWeF9uIBacc-IjM/view?usp=drive_link"
+            href="/CV/static"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl shadow-md transition"
             target="_blank"
             rel="noopener noreferrer"
@@ -35,7 +35,7 @@ export default function CVPage() {
 
           {/* Download PDF */}
           <a
-            href="https://drive.google.com/file/d/1nGINbIQsHBjGnho9WyWeF9uIBacc-IjM/view?usp=drive_link"
+            href="/assets/CV/Clement%20Hansel%20CV.pdf"
             download
             className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl shadow-md transition"
           >
@@ -45,9 +45,9 @@ export default function CVPage() {
         </section>
       </main>
 
-      {/* Book Viewer */}
-      <div className="min-h-screen flex items-center justify-center">
-        <Book />
+      {/* 📖 Book Viewer */}
+      <div className="min-h-screen w-full flex justify-center items-start px-2 overflow-x-hidden px-2">
+        <CVBookWrapper />
       </div>
     </>
   );

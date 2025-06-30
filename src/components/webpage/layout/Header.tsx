@@ -14,18 +14,18 @@ export default function Header() {
     {
       name: "Projects",
       children: [
-        { name: "Games", href: "/(main)/games" },
-        { name: "Apps", href: "/(main)/apps" },
+        { name: "Games", href: "/games" },
+        { name: "Apps", href: "/apps" },
       ],
     },
-    { name: "About Me", href: "/(main)/about" },
-    { name: "My CV", href: "/(main)/CV" },
-    { name: "Blog", href: "/(main)/blog" },
-    { name: "Shop", href: "/(main)/shop" },
-    { name: "Documentation", href: "/(main)/documentation" },
-    { name: "Contact", href: "/(main)/contact" },
-    { name: "Support", href: "/(main)/support" },
-    { name: "Sign in", href: "/(main)/signin" },
+    { name: "About Me", href: "/about" },
+    { name: "My CV", href: "/CV" },
+    { name: "Blog", href: "/blog" },
+    { name: "Shop", href: "/shop" },
+    { name: "Documentation", href: "/documentation" },
+    { name: "Contact", href: "/contact" },
+    { name: "Support", href: "/support" },
+    { name: "Sign in", href: "/signin" },
   ];
 
   return (

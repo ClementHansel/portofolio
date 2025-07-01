@@ -160,28 +160,25 @@ export default function Intro() {
       ref={containerRef}
       className="h-screen bg-black text-white flex items-center justify-center relative overflow-hidden"
     >
-      {/* Logos + Overlays Grouped */}
-      <div className="absolute top-[25%] left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
-        {/* Logo 1 */}
-        <div className="relative w-[280px] h-[280px]">
+      {/* Logos */}
+      <div className="absolute top-[20%] sm:top-[25%] left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+        <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[280px] md:h-[280px]">
           <div ref={logo1Ref} className="absolute inset-0">
             <Image
               src="/assets/images/logo/Clogo.png"
               alt="Logo 1"
-              width={280}
-              height={280}
+              fill
+              className="object-contain"
             />
           </div>
         </div>
-
-        {/* Logo 2 */}
-        <div className="relative w-[280px] h-[280px] -ml-[150px]">
+        <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[280px] md:h-[280px] -ml-[90px] sm:-ml-[120px] md:-ml-[150px]">
           <div ref={logo2Ref} className="absolute inset-0">
             <Image
               src="/assets/images/logo/Hlogo.png"
               alt="Logo 2"
-              width={280}
-              height={280}
+              fill
+              className="object-contain"
             />
           </div>
         </div>
@@ -189,10 +186,10 @@ export default function Intro() {
 
       {/* Intro Text */}
       <div
-        className="absolute top-[55%] flex flex-col items-center text-xl"
+        className="absolute top-[60%] sm:top-[55%] flex flex-col items-center text-base sm:text-lg md:text-xl"
         ref={welcomeRef}
       >
-        <div className="text-2xl">
+        <div>
           {typedText}
           <span className="animate-pulse">|</span>
         </div>
@@ -201,16 +198,16 @@ export default function Intro() {
       {/* Profile & Info */}
       <div
         ref={profileRef}
-        className="opacity-0 absolute top-[30%] w-full flex px-20 items-center"
+        className="opacity-0 absolute top-[30%] w-full flex flex-col md:flex-row items-center px-4 sm:px-10 md:px-20 gap-8"
       >
-        <div className="w-1/2 flex justify-center">
-          {/* Orbiting Planets */}
-          <div className="relative w-[200px] h-[200px]">
+        {/* Profile + Orbit */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <div className="relative w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px]">
             <Image
               src="/assets/images/profile/profile.jpg"
               alt="Profile"
               fill
-              className="rounded-full border-4 border-yellow-500 shadow-lg z-10"
+              className="rounded-full border-4 border-yellow-500 shadow-lg z-10 object-cover"
             />
             {/* Yellow Planet */}
             <div className="absolute inset-0">
@@ -334,26 +331,33 @@ export default function Intro() {
           </div>
         </div>
 
-        <div className="w-1/2 flex justify-center">
-          <div className="flex flex-col gap-3">
-            <div ref={nameRef} className="opacity-0 text-3xl">
+        {/* Name + Role */}
+        <div className="w-full md:w-1/2 flex justify-center text-center md:text-left">
+          <div className="flex flex-col gap-2">
+            <div
+              ref={nameRef}
+              className="opacity-0 text-xl sm:text-2xl md:text-3xl"
+            >
               I&apos;m{" "}
               <span className="relative inline-block text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400 bg-[length:250%_100%] bg-clip-text animate-shine animate-glow">
                 Clement Hansel
               </span>
             </div>
-            <div ref={roleRef} className="opacity-0 text-2xl text-green-400">
+            <div
+              ref={roleRef}
+              className="opacity-0 text-green-400 text-lg sm:text-xl md:text-2xl"
+            >
               Software Engineer
             </div>
           </div>
         </div>
       </div>
 
-      {/* Outro Text */}
+      {/* Outro */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-50">
         <div
           ref={enjoyRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl italic text-white/70 opacity-0 text-center z-50"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl md:text-4xl italic text-white/70 opacity-0 text-center"
         >
           I hope you enjoy this portfolio
         </div>

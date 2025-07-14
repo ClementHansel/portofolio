@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Login from "@/components/webpage/auth/Login";
 import Register from "@/components/webpage/auth/Register";
@@ -8,6 +9,16 @@ import Error from "@/components/webpage/auth/Error";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function AuthPage() {
+  return (
+    <Suspense
+      fallback={<div className="text-white text-center">Loading...</div>}
+    >
+      <AuthContent />
+    </Suspense>
+  );
+}
+
+function AuthContent() {
   const params = useSearchParams();
   const mode = params.get("mode");
 

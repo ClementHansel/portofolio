@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+// import { useRouter } from "next/navigation";
+// import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 
 export default function Login() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const cardStyle =
     "p-6 shadow-2xl backdrop-blur-md bg-white/10 border border-white/30 rounded-xl text-white relative overflow-hidden";
@@ -27,42 +27,20 @@ export default function Login() {
     setMessage("");
     setLoading(true);
 
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify(form),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.error || "Login failed");
+    // 🔒 Skip login logic temporarily
+    setTimeout(() => {
+      setMessage("Login skipped. Auth logic disabled.");
       setLoading(false);
-      return;
-    }
-
-    // Use credentials provider to establish session
-    const login = await signIn("credentials", {
-      redirect: false,
-      email: form.email,
-      password: form.password,
-      callbackUrl: "/dashboard",
-    });
-
-    if (login?.ok) {
-      router.push("/dashboard");
-    } else {
-      setError("Invalid credentials.");
-    }
-
-    setLoading(false);
+    }, 500);
   };
 
   const handleGoogleLogin = async () => {
     setLoading(true);
-    await signIn("google", { callbackUrl: "/dashboard" });
+    // 🔒 Skip Google login logic
+    setTimeout(() => {
+      setMessage("Google login skipped. Auth logic disabled.");
+      setLoading(false);
+    }, 500);
   };
 
   return (

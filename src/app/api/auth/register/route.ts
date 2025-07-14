@@ -1,15 +1,15 @@
 // src/app/api/auth/register/route.ts
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/lib/api/auth/mailer";
 
-const prisma = new PrismaClient();
+// 🔒 Disabled for now to allow build without DB
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const { fullName, email, password, confirmPassword, phone, title } =
-      await req.json();
+    const { fullName, email, password, confirmPassword } = await req.json();
 
     if (!email || !password || !fullName) {
       return NextResponse.json(
@@ -25,37 +25,31 @@ export async function POST(req: Request) {
       );
     }
 
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
+    // const existingUser = await prisma.user.findUnique({
+    //   where: { email },
+    // });
 
-    if (existingUser) {
-      return NextResponse.json(
-        { error: "User with this email already exists." },
-        { status: 409 }
-      );
-    }
+    // if (existingUser) {
+    //   return NextResponse.json(
+    //     { error: "User with this email already exists." },
+    //     { status: 409 }
+    //   );
+    // }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await prisma.user.create({
-      data: {
-        name: fullName,
-        email,
-        password: hashedPassword,
-        phone,
-        title,
-        emailVerified: null, // email still needs verification
-      },
-    });
+    // const newUser = await prisma.user.create({
+    //   data: {
+    //     name: fullName,
+    //     email,
+    //     password: hashedPassword,
+    //     phone,
+    //     title,
+    //     emailVerified: null,
+    //   },
+    // });
 
-    // 🔐 Optional: generate token for later verification (implement separately if needed)
-    // const token = crypto.randomUUID();
-
-    // Save token in DB if you want to manually verify via link:
-    // await prisma.verificationToken.create({ data: { identifier: email, token, expires: ... } });
-
-    const verificationUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?email=${email}`; // or with token param
+    const verificationUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?email=${email}`;
 
     await sendVerificationEmail({
       email,
@@ -65,8 +59,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       {
-        message: "Registration successful. Check your email to verify.",
-        userId: newUser.id,
+        message:
+          "Registration simulated. Check your email to verify (email may not send if key is unset).",
+        // userId: newUser.id,
       },
       { status: 201 }
     );

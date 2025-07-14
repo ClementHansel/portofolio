@@ -23,7 +23,6 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
@@ -46,36 +45,10 @@ export default function Register() {
       return;
     }
 
-    try {
-      setLoading(true);
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data?.message || "Something went wrong");
-        return;
-      }
-
-      setMessage("✅ Registration successful! Please check your email.");
-      setForm({
-        title: "",
-        fullName: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-      });
-    } catch (err) {
-      console.error("Registration error:", err);
-      setError("Something went wrong. Try again.");
-    } finally {
-      setLoading(false);
-    }
+    // 🔒 Skip registration logic temporarily
+    setTimeout(() => {
+      setMessage("Registration skipped. Auth logic disabled.");
+    }, 500);
   };
 
   return (
@@ -90,7 +63,7 @@ export default function Register() {
           value={form.title}
           onChange={handleChange}
           className={inputStyle}
-          aria-label="select tittle"
+          aria-label="select title"
         >
           <option value="">Select Title</option>
           {titles.map((t) => (
@@ -176,10 +149,9 @@ export default function Register() {
 
         <button
           type="submit"
-          disabled={loading}
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
         >
-          {loading ? "Registering..." : "Register"}
+          Register
         </button>
 
         <p className="text-center text-sm mt-2">

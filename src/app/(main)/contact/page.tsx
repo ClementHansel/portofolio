@@ -19,26 +19,24 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // For now, simulate successful submission
     toast.success("Your message has been sent!");
     setFormData({ name: "", email: "", tittle: "", message: "" });
   };
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12 text-gray-800">
+    <main className="min-h-screen bg-black text-white px-6 py-12">
       <Toaster position="top-right" />
 
-      <section className="mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-gray-900">Contact Me</h1>
-        <p className="text-lg text-gray-700 leading-7">
+      <section className="max-w-3xl mx-auto mb-12">
+        <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
+        <p className="text-lg text-gray-300 leading-7">
           I’d love to hear from you — whether it’s a project opportunity,
           collaboration, or just a hello. Drop a message using the form below
           and I’ll get back to you soon!
         </p>
       </section>
 
-      <section className="bg-gray-50 p-6 rounded-2xl shadow-sm">
+      <section className="max-w-3xl mx-auto bg-[#121212] p-6 rounded-2xl shadow-xl border border-gray-700">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium mb-1" htmlFor="name">
@@ -50,7 +48,7 @@ export default function ContactPage() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your full name"
             />
           </div>
@@ -65,14 +63,14 @@ export default function ContactPage() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="message">
-              Message
+            <label className="block text-sm font-medium mb-1" htmlFor="tittle">
+              Title
             </label>
             <textarea
               id="tittle"
@@ -80,8 +78,8 @@ export default function ContactPage() {
               required
               value={formData.tittle}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Type your tittle here..."
+              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Type your title here..."
             />
             <textarea
               id="message"
@@ -89,7 +87,7 @@ export default function ContactPage() {
               required
               value={formData.message}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-3 bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Type your message here..."
             />
           </div>
@@ -105,8 +103,8 @@ export default function ContactPage() {
         </form>
       </section>
 
-      <section className="mt-12 text-md text-gray-700">
-        <h2 className="text-xl font-semibold mb-4 text-gray-900">
+      <section className="max-w-3xl mx-auto mt-12 text-md text-gray-300">
+        <h2 className="text-xl font-semibold mb-4 text-white">
           Reach Me Directly
         </h2>
         <ul className="space-y-2">
@@ -116,7 +114,7 @@ export default function ContactPage() {
               href="https://wa.me/628111546034"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-blue-400 hover:underline"
             >
               +62 811 1546 034
             </a>
@@ -125,7 +123,7 @@ export default function ContactPage() {
             <span className="font-medium">Email:</span>{" "}
             <a
               href="mailto:clement_hansel@yahoo.com"
-              className="text-blue-600 hover:underline"
+              className="text-blue-400 hover:underline"
             >
               clement_hansel@yahoo.com
             </a>
@@ -133,10 +131,10 @@ export default function ContactPage() {
           <li>
             <span className="font-medium">LinkedIn:</span>{" "}
             <a
-              href="https://www.linkedin.com/in/clement-hansel-7a312b55/"
+              href="https://www.linkedin.com/in/clement-hansel/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-blue-400 hover:underline"
             >
               linkedin.com/in/clement-hansel
             </a>

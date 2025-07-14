@@ -1,4 +1,3 @@
-/* eslint-disable */
 "use client";
 
 import { useState } from "react";
@@ -21,8 +20,8 @@ export default function SupportPage() {
 
   const goal = {
     goalName: "Support My Portfolio Hosting",
-    target: 1_000_000, // in Rupiah
-    current: 320_000, // in Rupiah
+    target: 1_000_000,
+    current: 320_000,
   };
 
   const progress = Math.min((goal.current / goal.target) * 100, 100);
@@ -44,13 +43,13 @@ export default function SupportPage() {
   };
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-12 text-gray-800">
+    <main className="min-h-screen bg-black text-white px-6 py-12">
       {/* Page Intro */}
-      <section className="mb-8 text-center">
-        <h1 className="text-4xl font-bold text-blue-700 mb-3">
+      <section className="max-w-2xl mx-auto mb-8 text-center">
+        <h1 className="text-4xl font-bold text-blue-400 mb-3">
           Support My Work
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-lg text-gray-300">
           This page exists to help support the time, effort, and cost that go
           into maintaining and improving my portfolio and open work. Every
           contribution makes a difference 🙏
@@ -58,24 +57,24 @@ export default function SupportPage() {
       </section>
 
       {/* Goal Widget */}
-      <section className="mb-10 bg-white shadow rounded-xl p-6 border">
-        <h2 className="text-xl font-semibold text-blue-600 mb-2">
+      <section className="max-w-2xl mx-auto mb-10 bg-[#121212] border border-gray-700 p-6 rounded-xl shadow-lg">
+        <h2 className="text-xl font-semibold text-blue-400 mb-2">
           🎯 {goal.goalName}
         </h2>
-        <div className="w-full bg-gray-200 rounded-full h-4 mb-2 overflow-hidden">
+        <div className="w-full bg-gray-700 rounded-full h-4 mb-2 overflow-hidden">
           <div
             className="bg-green-500 h-full"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-400">
           Collected: <strong>Rp{goal.current.toLocaleString()}</strong> / Rp
           {goal.target.toLocaleString()}
         </p>
       </section>
 
       {/* Donation Form */}
-      <section className="mb-8 bg-white shadow rounded-xl p-6 border">
+      <section className="max-w-2xl mx-auto mb-8 bg-[#121212] border border-gray-700 p-6 rounded-xl shadow-lg">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium mb-1">Name</label>
@@ -85,7 +84,7 @@ export default function SupportPage() {
               required
               value={donation.name}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2"
+              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your name"
             />
           </div>
@@ -98,12 +97,12 @@ export default function SupportPage() {
               required
               value={donation.email}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-xl px-4 py-2"
+              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
             />
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap sm:flex-nowrap">
             <div className="flex-1">
               <label className="block text-sm font-medium mb-1">Amount</label>
               <input
@@ -112,19 +111,19 @@ export default function SupportPage() {
                 required
                 value={donation.amount}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-4 py-2"
+                className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g. 50000"
               />
             </div>
 
-            <div>
+            <div className="w-full sm:w-auto">
               <label className="block text-sm font-medium mb-1">Currency</label>
               <select
                 name="currency"
                 value={donation.currency}
                 onChange={handleChange}
-                className="border border-gray-300 rounded-xl px-4 py-2"
-                title="set currency"
+                className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label="select currency"
               >
                 <option value="IDR">Rupiah (IDR) 🇮🇩</option>
                 <option value="USD">USD 🌐</option>
@@ -136,7 +135,7 @@ export default function SupportPage() {
 
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-xl shadow-md flex items-center gap-2"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-xl shadow-md flex items-center gap-2 transition duration-200"
           >
             <FaHeart /> Donate Now
           </button>
@@ -144,7 +143,7 @@ export default function SupportPage() {
       </section>
 
       {/* Encouragement Message */}
-      <p className="text-center text-sm text-gray-500 italic">
+      <p className="text-center text-sm text-gray-400 italic max-w-2xl mx-auto">
         Your support means the world to me 🌍 Whether small or large, each
         donation helps me continue doing what I love.
       </p>

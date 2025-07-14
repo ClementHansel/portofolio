@@ -16,6 +16,7 @@ export default function Intro() {
   const roleRef = useRef(null);
   const enjoyRef = useRef(null);
   const dotsRef = useRef(null);
+  const hasScrolledToHero = useRef(false);
 
   const fullText = "Welcome to my page ! ";
   const [typedText, setTypedText] = useState("");
@@ -150,6 +151,7 @@ export default function Intro() {
     tl.call(() => {
       const next = document.querySelector("#hero");
       if (next) next.scrollIntoView({ behavior: "smooth" });
+      hasScrolledToHero.current = true; // ✅ prevent future scrolls
     });
 
     return tl;

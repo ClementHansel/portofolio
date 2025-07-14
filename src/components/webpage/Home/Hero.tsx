@@ -7,63 +7,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 
-// Reusable animated tech component
-function AnimatedTech({
-  name,
-  iconSrc,
-  color,
-}: {
-  name: string;
-  iconSrc: string;
-  color: string;
-}) {
-  const [showIcon, setShowIcon] = useState(false);
-
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      const interval = setInterval(() => {
-        setShowIcon((prev) => !prev);
-      }, 5000);
-
-      // Cleanup
-      return () => clearInterval(interval);
-    }, 2000);
-
-    return () => clearTimeout(delay);
-  }, []);
-
-  return (
-    <div className="relative w-[70px] h-[25px] text-center inline-block">
-      {/* Text */}
-      <motion.span
-        initial={{ opacity: 1 }}
-        animate={{ opacity: showIcon ? 0 : 1 }}
-        transition={{ duration: 0.5 }}
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ color }}
-      >
-        {name}
-      </motion.span>
-
-      {/* Icon */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showIcon ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        <Image
-          src={iconSrc}
-          alt={name}
-          width={40}
-          height={40}
-          className="inline-block object-contain w-10 h-10 mx-auto"
-        />
-      </motion.div>
-    </div>
-  );
-}
-
 export default function Hero() {
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -143,73 +86,10 @@ export default function Hero() {
             .
           </motion.p>
 
-          <motion.div
-            className="flex flex-wrap gap-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            I&apos;m proficient in
-            <AnimatedTech
-              name="TypeScript"
-              iconSrc="/assets/images/props/typescript.png"
-              color="#3178C6"
-            />
-            ,
-            <AnimatedTech
-              name="React"
-              iconSrc="/assets/images/props/react.png"
-              color="#61DAFB"
-            />
-            ,
-            <AnimatedTech
-              name="Next.js"
-              iconSrc="/assets/images/props/next.png"
-              color="#00dc82"
-            />
-            ,
-            <AnimatedTech
-              name="Node.js"
-              iconSrc="/assets/images/props/node.png"
-              color="#339933"
-            />
-            , and
-            <AnimatedTech
-              name="AWS"
-              iconSrc="/assets/images/props/aws.png"
-              color="#FF9900"
-            />
-            , with hands-on experience integrating
-            <AnimatedTech
-              name="LoRa"
-              iconSrc="/assets/images/props/lora.png"
-              color="#00BFFF"
-            />
-            ,
-            <AnimatedTech
-              name="GSM"
-              iconSrc="/assets/images/props/gsm.png"
-              color="#F7931E"
-            />
-            ,
-            <AnimatedTech
-              name="GPS"
-              iconSrc="/assets/images/props/gps.png"
-              color="#4682B4"
-            />
-            , and{" "}
-            <AnimatedTech
-              name="Sensor"
-              iconSrc="/assets/images/props/iot.png"
-              color="#20C997"
-            />
-            into scalable platforms.
-          </motion.div>
-
           {/* Buttons */}
           <div className="flex gap-4 mt-4">
             <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-4 w-full justify-center items-center">
-              <Link href="/cv">
+              <Link href="/CV">
                 <button className="neon-btn w-40 text-center">My CV</button>
               </Link>
               <Link href="/about">

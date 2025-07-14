@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -8,7 +8,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const navItems = [
     {
@@ -25,12 +25,21 @@ export default function Header() {
     { name: "Documentation", href: "/documentation" },
     { name: "Contact", href: "/contact" },
     { name: "Support", href: "/support" },
-    { name: "Sign in", href: "/signin" },
+    { name: "Sign in", href: "/auth" },
   ];
+
+  // Prevent background scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isOpen]);
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-gray-900 text-white shadow-md">
-      <div className="flex justify-between items-center px-6 py-4 max-w-screen mx-auto">
+      <div className="flex justify-between items-center px-6 py-4 max-w-screen-xl mx-auto">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -39,6 +48,7 @@ export default function Header() {
             width={50}
             height={50}
             className="cursor-pointer"
+            priority
           />
         </Link>
 
@@ -46,22 +56,16 @@ export default function Header() {
         <nav className="hidden md:flex space-x-6 items-center">
           {navItems.map((item, idx) =>
             item.children ? (
-              <div key={idx} className="relative hover-delay-group">
-                {/* Trigger */}
+              <div key={idx} className="relative group">
                 <span className="cursor-pointer hover:text-yellow-400 px-2 py-1 transition">
                   {item.name}
                 </span>
-
-                {/* Submenu */}
-                <div
-                  className="absolute top-full left-0 hover-delay-enter bg-gray-900 border border-gray-700 rounded-md shadow-lg flex flex-col z-50 min-w-[120px]"
-                  // remove mt-2 to eliminate gap
-                >
+                <div className="absolute top-full left-0 mt-2 bg-gray-900 border border-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50 min-w-[140px]">
                   {item.children.map((child, cidx) => (
                     <Link
                       key={cidx}
                       href={child.href}
-                      className="px-4 py-2 text-sm hover:text-yellow-400 transition whitespace-nowrap"
+                      className="block px-4 py-2 text-sm hover:text-yellow-400 whitespace-nowrap"
                     >
                       {child.name}
                     </Link>
@@ -80,33 +84,35 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Hamburger (Mobile) */}
+        {/* Mobile Toggle */}
         <button
-          className="md:hidden text-xl z-50"
+          className="md:hidden text-2xl z-[60]"
           onClick={toggleMenu}
-          aria-label="Toggle Menu"
+          aria-label="Toggle navigation"
         >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Slide-in Menu */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full w-2/3 bg-gray-800 shadow-lg z-40 transform transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 right-0 h-full w-3/4 sm:w-2/3 bg-gray-800 shadow-xl z-40 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="p-6 space-y-4 pt-20">
+        <div className="p-6 space-y-6 pt-20">
           {navItems.map((item, idx) =>
             item.children ? (
               <div key={idx}>
-                <span className="block font-semibold mb-1">Projects</span>
-                <div className="pl-4 space-y-1">
+                <span className="block font-semibold text-yellow-400 mb-2">
+                  {item.name}
+                </span>
+                <div className="pl-4 space-y-2">
                   {item.children.map((child, cidx) => (
                     <Link
                       key={cidx}
                       href={child.href}
-                      className="block text-sm hover:text-yellow-400"
+                      className="block text-sm text-neutral-300 hover:text-yellow-400"
                       onClick={() => setIsOpen(false)}
                     >
                       {child.name}
@@ -118,7 +124,7 @@ export default function Header() {
               <Link
                 key={idx}
                 href={item.href}
-                className="block hover:text-yellow-400"
+                className="block text-neutral-300 hover:text-yellow-400"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -127,6 +133,14 @@ export default function Header() {
           )}
         </div>
       </div>
+
+      {/* Overlay behind mobile menu (optional for dimming) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-30"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </header>
   );
 }

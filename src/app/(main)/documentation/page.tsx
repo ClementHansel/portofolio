@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
 const documentationStructure = [
   {
@@ -49,10 +50,10 @@ const documentationStructure = [
     files: [{ name: "User Dashboard", path: "/docs/dashboard/overview.md" }],
   },
   {
-    category: "Products",
+    category: "Shop",
     description:
-      "Overview of all product-related features and documentation outlining goals, data structures, and potential plans.",
-    files: [{ name: "Products", path: "/docs/products/overview.md" }],
+      "Overview of all shop-related features and documentation outlining goals, data structures, and potential plans.",
+    files: [{ name: "Shop", path: "/docs/shop/overview.md" }],
   },
   {
     category: "Unified Payment System",
@@ -70,47 +71,61 @@ export default function DocumentationPage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 text-gray-800">
-      <section className="mb-10 text-center">
-        <h1 className="text-4xl font-bold mb-4">Project Documentation</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          This documentation contains the technical and functional breakdown of
-          the site, games, demos, blog, dashboard, and unified payment system.
+    <main className="max-w-5xl mx-auto px-6 py-12 text-white">
+      <section className="mb-12 text-center">
+        <h1 className="text-4xl font-bold mb-4">📚 Project Documentation</h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          Explore technical and functional breakdowns for the web, games, demos,
+          blog, dashboard, and payment systems.
         </p>
       </section>
 
-      {documentationStructure.map((section) => (
-        <div key={section.category} className="mb-10">
-          <h2
-            className="text-2xl font-semibold text-blue-700 cursor-pointer hover:underline mb-1"
-            onClick={() =>
-              setActiveCategory(
-                activeCategory === section.category ? null : section.category
-              )
-            }
-          >
-            {section.category}
-          </h2>
+      <div className="space-y-6">
+        {documentationStructure.map((section) => {
+          const isActive = activeCategory === section.category;
 
-          <p className="text-sm text-gray-600 mb-2">{section.description}</p>
+          return (
+            <div
+              key={section.category}
+              className="border border-gray-700 bg-gray-900 rounded-xl p-6 shadow-md transition"
+            >
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() =>
+                  setActiveCategory(isActive ? null : section.category)
+                }
+              >
+                <h2 className="text-xl font-semibold text-blue-400 hover:underline">
+                  {section.category}
+                </h2>
+                <span className="text-blue-400">
+                  {isActive ? <FaChevronDown /> : <FaChevronRight />}
+                </span>
+              </div>
 
-          {activeCategory === section.category && (
-            <ul className="pl-4 list-disc space-y-1">
-              {section.files.map((file) => (
-                <li key={file.path}>
-                  <Link
-                    href={file.path}
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                  >
-                    {file.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+              <p className="text-sm text-gray-400 mt-2">
+                {section.description}
+              </p>
+
+              {isActive && (
+                <ul className="mt-4 pl-4 list-disc space-y-1 text-gray-300">
+                  {section.files.map((file) => (
+                    <li key={file.path}>
+                      <Link
+                        href={file.path}
+                        target="_blank"
+                        className="text-blue-500 hover:underline"
+                      >
+                        {file.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </main>
   );
 }

@@ -1,4 +1,3 @@
-// src/app/blog/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -27,7 +26,6 @@ const FEEDS = [
     url: "https://www.youtube.com/feeds/videos.xml?channel_id=YOUR_CHANNEL_ID",
     source: "YouTube",
   },
-  // Add additional feeds...
 ];
 
 export default function BlogPage() {
@@ -64,7 +62,6 @@ export default function BlogPage() {
         })
       );
 
-      // Sort descending by date
       all.sort(
         (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
       );
@@ -112,22 +109,25 @@ export default function BlogPage() {
   ];
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12 text-gray-900">
+    <main className="max-w-3xl mx-auto px-6 py-12 text-gray-100">
+      {/* Intro */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
-        <p className="text-lg text-gray-700 leading-relaxed">
+        <h1 className="text-4xl font-bold mb-4 text-white">
+          Welcome to My Blog
+        </h1>
+        <p className="text-lg text-gray-400 leading-relaxed">
           Here you&apos;ll find my latest posts from across the web — from
           LinkedIn, YouTube, and more. Posts are automatically fetched, sorted
           by date, and you can filter by date, source, or tags.
         </p>
       </section>
 
-      {/* ▶️ Filters */}
-      <section className="bg-gray-100 rounded-lg p-4 mb-8 flex flex-wrap gap-4">
+      {/* Filters */}
+      <section className="bg-gray-800 rounded-lg p-4 mb-8 flex flex-wrap gap-4 text-sm text-white">
         <select
           onChange={(e) => setFilter({ ...filter, dateRange: e.target.value })}
-          className="px-3 py-2 border rounded"
-          title="filter date"
+          className="px-3 py-2 bg-black border border-gray-700 rounded focus:outline-none"
+          title="Filter by date"
         >
           <option value="all">All dates</option>
           <option value="today">Today</option>
@@ -139,8 +139,8 @@ export default function BlogPage() {
 
         <select
           onChange={(e) => setFilter({ ...filter, source: e.target.value })}
-          className="px-3 py-2 border rounded"
-          title="filter source"
+          className="px-3 py-2 bg-black border border-gray-700 rounded focus:outline-none"
+          title="Filter by source"
         >
           {allSources.map((s) => (
             <option key={s}>{s}</option>
@@ -149,8 +149,8 @@ export default function BlogPage() {
 
         <select
           onChange={(e) => setFilter({ ...filter, tag: e.target.value })}
-          className="px-3 py-2 border rounded"
-          title="filter tag"
+          className="px-3 py-2 bg-black border border-gray-700 rounded focus:outline-none"
+          title="Filter by tag"
         >
           {allTags.map((t) => (
             <option key={t}>{t}</option>
@@ -158,22 +158,22 @@ export default function BlogPage() {
         </select>
       </section>
 
-      {/* 🔥 Recent Posts */}
+      {/* Recent Posts */}
       <section className="mb-10">
-        <h2 className="text-2xl font-semibold mb-4">Recent Posts</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-white">Recent Posts</h2>
         {recent.map((p, i) => (
           <article
             key={i}
-            className="mb-6 p-4 rounded-lg border hover:shadow-lg transition"
+            className="mb-6 p-4 rounded-lg border border-gray-700 hover:bg-gray-800 transition"
           >
             <Link
               href={p.link}
               target="_blank"
-              className="text-xl font-medium text-blue-700"
+              className="text-xl font-medium text-blue-400 hover:underline"
             >
               {p.title}
             </Link>
-            <div className="text-sm text-gray-500 mt-1">
+            <div className="text-sm text-gray-400 mt-1">
               {format(new Date(p.pubDate), "MMM d, yyyy")} • {p.source}
               {p.categories.length > 0 && (
                 <>
@@ -186,23 +186,23 @@ export default function BlogPage() {
         ))}
       </section>
 
-      {/* 📚 Other Posts */}
+      {/* Other Posts */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Other Posts</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-white">Other Posts</h2>
         <ul className="space-y-4">
           {others.map((p, i) => (
             <li
               key={i}
-              className="p-3 border rounded hover:bg-gray-50 transition"
+              className="p-3 border border-gray-700 rounded hover:bg-gray-800 transition"
             >
               <Link
                 href={p.link}
                 target="_blank"
-                className="font-medium text-blue-600"
+                className="font-medium text-blue-400 hover:underline"
               >
                 {p.title}
               </Link>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-400">
                 {format(new Date(p.pubDate), "PPP")} • {p.source}
               </div>
             </li>

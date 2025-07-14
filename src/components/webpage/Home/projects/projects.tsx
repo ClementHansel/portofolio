@@ -22,7 +22,7 @@ export default function Projects() {
           <ProjectCard
             icon={
               <Image
-                src="/assets/icons/gamepad.svg"
+                src="/assets/images/props/games.png"
                 alt="Games Icon"
                 width={48}
                 height={48}
@@ -39,7 +39,7 @@ export default function Projects() {
           <ProjectCard
             icon={
               <Image
-                src="/assets/icons/app.svg"
+                src="/assets/images/props/apps.png"
                 alt="Apps Icon"
                 width={48}
                 height={48}

@@ -118,10 +118,10 @@ export default function Book() {
       </HTMLFlipBook>
 
       {/* 🔽 Bottom Navigation */}
-      <div className="flex items-center gap-3 mt-4 text-sm">
+      <div className="flex items-center gap-3 mt-4 text-sm text-white bg-black">
         <button
           onClick={flipPrev}
-          className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"
+          className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 hover:text-black"
         >
           <ChevronLeft size={16} /> Prev
         </button>
@@ -130,7 +130,7 @@ export default function Book() {
           <select
             value={pageIndex}
             onChange={(e) => jumpToPage(Number(e.target.value))}
-            className="border border-gray-300 rounded px-2 py-1 appearance-none bg-white shadow"
+            className="border border-gray-300 rounded px-2 py-1 appearance-none shadow text-black bg-white"
             title="Go to Page"
           >
             {pages.map((p, i) => (
@@ -143,7 +143,7 @@ export default function Book() {
 
         <button
           onClick={flipNext}
-          className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"
+          className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100  hover:text-black"
         >
           Next <ChevronRight size={16} />
         </button>

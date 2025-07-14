@@ -14,6 +14,7 @@ import Blog from "@/components/webpage/Home/blog/Blog";
 import Connect from "@/components/webpage/Home/connect/Connect";
 import Testimonial from "@/components/webpage/Home/testimonial/Testimonial";
 import Contact from "@/components/webpage/Home/Contact";
+import Skills from "@/components/webpage/Home/skills/Skills";
 
 export default function HomePage() {
   useEffect(() => {
@@ -105,6 +106,10 @@ export default function HomePage() {
       {/* ✅ Each section now scroll-animates naturally */}
       <div id="hero">
         <Hero />
+      </div>
+
+      <div id="hero">
+        <Skills />
       </div>
 
       <div id="projects" className="bg-white text-black">

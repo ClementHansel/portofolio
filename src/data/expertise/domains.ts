@@ -1,0 +1,188 @@
+import { ExpertiseDomain } from "@/types/expertise";
+
+export const expertiseDomains: ExpertiseDomain[] = [
+  {
+    id: "system-architecture",
+    title: "System Architecture",
+    subtitle: "Designing systems that scale",
+    description:
+      "End-to-end system design from microservices to monoliths. Specializing in distributed systems, event-driven architectures, and cloud-native solutions that handle millions of requests.",
+    icon: "🏗️",
+    color: "#ef4444",
+    glowColor: "rgba(239, 68, 68, 0.4)",
+    skills: [
+      { name: "Microservices", level: "expert", years: 4 },
+      { name: "Event-Driven Architecture", level: "expert", years: 3 },
+      { name: "Domain-Driven Design", level: "advanced", years: 3 },
+      { name: "API Design (REST/GraphQL)", level: "expert", years: 5 },
+      { name: "Database Architecture", level: "advanced", years: 4 },
+      { name: "System Integration", level: "expert", years: 4 },
+    ],
+    highlights: [
+      "Architected national-scale IoT monitoring platforms",
+      "Designed multi-tenant SaaS systems serving 10K+ users",
+      "Led technical decisions for cross-functional engineering teams",
+    ],
+  },
+  {
+    id: "iot",
+    title: "IoT Engineering",
+    subtitle: "Connecting the physical and digital",
+    description:
+      "Building end-to-end IoT solutions from sensor hardware to cloud dashboards. Experience with LoRa, MQTT, GSM, GPS, and real-time data streaming for industrial and government applications.",
+    icon: "📡",
+    color: "#06b6d4",
+    glowColor: "rgba(6, 182, 212, 0.4)",
+    skills: [
+      { name: "LoRaWAN", level: "expert", years: 3 },
+      { name: "MQTT", level: "expert", years: 3 },
+      { name: "Sensor Integration", level: "expert", years: 4 },
+      { name: "Real-time Data Streaming", level: "advanced", years: 3 },
+      { name: "Edge Computing", level: "proficient", years: 2 },
+      { name: "GSM/GPS Modules", level: "advanced", years: 3 },
+    ],
+    highlights: [
+      "Led national Weigh-in-Motion system for Indonesian Ministry of Transportation",
+      "Developed smart buoy systems for coastal monitoring",
+      "Built disaster response platforms with GIS anomaly detection",
+    ],
+  },
+  {
+    id: "frontend",
+    title: "Frontend Engineering",
+    subtitle: "Crafting exceptional interfaces",
+    description:
+      "Building performant, accessible, and visually stunning web applications with modern frameworks. Expert in React ecosystem, animation libraries, and responsive design patterns.",
+    icon: "🎨",
+    color: "#3b82f6",
+    glowColor: "rgba(59, 130, 246, 0.4)",
+    skills: [
+      { name: "React / Next.js", level: "expert", years: 5 },
+      { name: "TypeScript", level: "expert", years: 4 },
+      { name: "Three.js / WebGL", level: "advanced", years: 2 },
+      { name: "GSAP / Framer Motion", level: "advanced", years: 3 },
+      { name: "Tailwind CSS", level: "expert", years: 4 },
+      { name: "Performance Optimization", level: "advanced", years: 3 },
+    ],
+    highlights: [
+      "Built this portfolio with 3D scenes, particle systems, and cinematic animations",
+      "Delivered 95+ Lighthouse performance scores on production apps",
+      "Created reusable component libraries used across multiple products",
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend Engineering",
+    subtitle: "Robust APIs and scalable services",
+    description:
+      "Designing and implementing server-side systems with Node.js, Python, and Go. Experience with RESTful APIs, GraphQL, real-time WebSockets, and database optimization.",
+    icon: "⚙️",
+    color: "#10b981",
+    glowColor: "rgba(16, 185, 129, 0.4)",
+    skills: [
+      { name: "Node.js / Express", level: "expert", years: 5 },
+      { name: "Python / FastAPI", level: "advanced", years: 3 },
+      { name: "PostgreSQL", level: "expert", years: 4 },
+      { name: "MongoDB", level: "advanced", years: 3 },
+      { name: "Redis / Caching", level: "advanced", years: 3 },
+      { name: "WebSocket / Real-time", level: "expert", years: 3 },
+    ],
+    highlights: [
+      "Built real-time data pipelines processing 100K+ events/day",
+      "Designed authentication systems with multi-tenant support",
+      "Optimized database queries reducing response times by 80%",
+    ],
+  },
+  {
+    id: "ai-ml",
+    title: "AI / ML Engineering",
+    subtitle: "Intelligent systems that learn",
+    description:
+      "Integrating machine learning models into production systems. From anomaly detection in IoT data to natural language processing and computer vision applications.",
+    icon: "🧠",
+    color: "#a855f7",
+    glowColor: "rgba(168, 85, 247, 0.4)",
+    skills: [
+      { name: "Python / TensorFlow", level: "advanced", years: 3 },
+      { name: "Anomaly Detection", level: "advanced", years: 2 },
+      { name: "NLP / LLM Integration", level: "proficient", years: 2 },
+      { name: "Computer Vision", level: "proficient", years: 2 },
+      { name: "Data Pipelines", level: "advanced", years: 3 },
+      { name: "Model Deployment", level: "advanced", years: 2 },
+    ],
+    highlights: [
+      "Built AI workflow builder (AiVory) for enterprise AI integration",
+      "Implemented anomaly detection for IoT sensor data streams",
+      "Integrated LLM capabilities into production applications",
+    ],
+  },
+  {
+    id: "devops",
+    title: "DevOps & Cloud",
+    subtitle: "Shipping reliably at scale",
+    description:
+      "Building CI/CD pipelines, containerized deployments, and cloud infrastructure. Focused on reliability, observability, and automated delivery workflows.",
+    icon: "🚀",
+    color: "#f59e0b",
+    glowColor: "rgba(245, 158, 11, 0.4)",
+    skills: [
+      { name: "Docker / Kubernetes", level: "advanced", years: 3 },
+      { name: "CI/CD (GitHub Actions)", level: "expert", years: 4 },
+      { name: "AWS / GCP", level: "advanced", years: 3 },
+      { name: "Nginx / Reverse Proxy", level: "advanced", years: 3 },
+      { name: "Monitoring / Logging", level: "advanced", years: 3 },
+      { name: "Infrastructure as Code", level: "proficient", years: 2 },
+    ],
+    highlights: [
+      "Set up zero-downtime deployment pipelines for production systems",
+      "Managed containerized microservices on Kubernetes clusters",
+      "Achieved 99.9% uptime on mission-critical IoT platforms",
+    ],
+  },
+  {
+    id: "ui-ux",
+    title: "UI/UX Design",
+    subtitle: "Human-centered digital experiences",
+    description:
+      "Designing intuitive interfaces grounded in user research, accessibility, and visual hierarchy. From wireframes to high-fidelity prototypes to production implementation.",
+    icon: "✨",
+    color: "#ec4899",
+    glowColor: "rgba(236, 72, 153, 0.4)",
+    skills: [
+      { name: "Figma / Design Systems", level: "advanced", years: 3 },
+      { name: "User Research", level: "proficient", years: 2 },
+      { name: "Prototyping", level: "advanced", years: 3 },
+      { name: "Accessibility (WCAG)", level: "advanced", years: 3 },
+      { name: "Motion Design", level: "advanced", years: 2 },
+      { name: "Responsive Design", level: "expert", years: 5 },
+    ],
+    highlights: [
+      "Designed and shipped 15+ production interfaces",
+      "Created design systems used by multiple development teams",
+      "Improved user engagement metrics by 40% through UX redesigns",
+    ],
+  },
+  {
+    id: "games",
+    title: "Game Development",
+    subtitle: "Interactive entertainment",
+    description:
+      "Building games with web technologies, Unity, and custom engines. From 2D platformers to 3D experiences, combining creative storytelling with technical execution.",
+    icon: "🎮",
+    color: "#8b5cf6",
+    glowColor: "rgba(139, 92, 246, 0.4)",
+    skills: [
+      { name: "Three.js / WebGL", level: "advanced", years: 2 },
+      { name: "Unity / C#", level: "proficient", years: 2 },
+      { name: "Game Physics", level: "proficient", years: 2 },
+      { name: "2D/3D Animation", level: "advanced", years: 3 },
+      { name: "Game UI Systems", level: "advanced", years: 2 },
+      { name: "Audio Integration", level: "proficient", years: 2 },
+    ],
+    highlights: [
+      "Developed 10 games spanning platformer, puzzle, horror, strategy, and racing genres",
+      "Built custom game engines using Three.js for web-based experiences",
+      "Created interactive 3D scenes for portfolio and product showcases",
+    ],
+  },
+];

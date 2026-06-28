@@ -1,146 +1,185 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa6";
 import toast, { Toaster } from "react-hot-toast";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { siteConfig } from "@/lib/constants";
+
+const contactLinks = [
+  {
+    icon: FaWhatsapp,
+    label: "WhatsApp",
+    value: "+62 811 1546 034",
+    href: siteConfig.links.whatsapp,
+    color: "#25D366",
+  },
+  {
+    icon: FaEnvelope,
+    label: "Email",
+    value: siteConfig.links.email,
+    href: `mailto:${siteConfig.links.email}`,
+    color: "#3b82f6",
+  },
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    value: "clement-hansel",
+    href: siteConfig.links.linkedin,
+    color: "#0A66C2",
+  },
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    value: "ClementHansel",
+    href: siteConfig.links.github,
+    color: "#f1f5f9",
+  },
+];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    tittle: "",
+    subject: "",
     message: "",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Your message has been sent!");
-    setFormData({ name: "", email: "", tittle: "", message: "" });
+    toast.success("Message sent! I'll get back to you soon.");
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-12">
+    <div className="section-padding">
       <Toaster position="top-right" />
+      <div className="max-w-5xl mx-auto">
+        <SectionHeading
+          title="Let's Connect"
+          subtitle="Have a project idea, need a CTO-level consultation, or just want to talk tech? Reach out."
+        />
 
-      <section className="max-w-3xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
-        <p className="text-lg text-gray-300 leading-7">
-          I’d love to hear from you — whether it’s a project opportunity,
-          collaboration, or just a hello. Drop a message using the form below
-          and I’ll get back to you soon!
-        </p>
-      </section>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-3"
+          >
+            <div className="glass-card p-8">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs text-[var(--text-muted)] mb-1.5 uppercase tracking-wider">
+                      Name
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-sm text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-blue)] transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-[var(--text-muted)] mb-1.5 uppercase tracking-wider">
+                      Email
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-sm text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-blue)] transition-colors"
+                      placeholder="you@company.com"
+                    />
+                  </div>
+                </div>
 
-      <section className="max-w-3xl mx-auto bg-[#121212] p-6 rounded-2xl shadow-xl border border-gray-700">
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="name">
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Your full name"
-            />
-          </div>
+                <div>
+                  <label className="block text-xs text-[var(--text-muted)] mb-1.5 uppercase tracking-wider">
+                    Subject
+                  </label>
+                  <input
+                    name="subject"
+                    type="text"
+                    required
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-sm text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-blue)] transition-colors"
+                    placeholder="Project inquiry, consulting, etc."
+                  />
+                </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="you@example.com"
-            />
-          </div>
+                <div>
+                  <label className="block text-xs text-[var(--text-muted)] mb-1.5 uppercase tracking-wider">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-sm text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-blue)] transition-colors resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="tittle">
-              Title
-            </label>
-            <textarea
-              id="tittle"
-              rows={1}
-              required
-              value={formData.tittle}
-              onChange={handleChange}
-              className="w-full bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Type your title here..."
-            />
-            <textarea
-              id="message"
-              rows={5}
-              required
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full mt-3 bg-black border border-gray-600 text-white rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Type your message here..."
-            />
-          </div>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 rounded-xl bg-[var(--accent-blue)] text-white font-semibold hover:bg-[var(--accent-blue)]/90 transition-all hover:shadow-[var(--glow-blue)]"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </motion.div>
 
-          <div>
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-200 shadow-md"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
-      </section>
-
-      <section className="max-w-3xl mx-auto mt-12 text-md text-gray-300">
-        <h2 className="text-xl font-semibold mb-4 text-white">
-          Reach Me Directly
-        </h2>
-        <ul className="space-y-2">
-          <li>
-            <span className="font-medium">WhatsApp:</span>{" "}
-            <a
-              href="https://wa.me/628111546034"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
-            >
-              +62 811 1546 034
-            </a>
-          </li>
-          <li>
-            <span className="font-medium">Email:</span>{" "}
-            <a
-              href="mailto:clement_hansel@yahoo.com"
-              className="text-blue-400 hover:underline"
-            >
-              clement_hansel@yahoo.com
-            </a>
-          </li>
-          <li>
-            <span className="font-medium">LinkedIn:</span>{" "}
-            <a
-              href="https://www.linkedin.com/in/clement-hansel/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
-            >
-              linkedin.com/in/clement-hansel
-            </a>
-          </li>
-        </ul>
-      </section>
-    </main>
+          {/* Contact Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-2 space-y-4"
+          >
+            {contactLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-card p-4 flex items-center gap-4 group block"
+              >
+                <link.icon
+                  className="w-5 h-5 transition-colors"
+                  style={{ color: link.color }}
+                />
+                <div>
+                  <p className="text-xs text-[var(--text-muted)]">
+                    {link.label}
+                  </p>
+                  <p className="text-sm text-white group-hover:text-[var(--accent-blue)] transition-colors">
+                    {link.value}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }

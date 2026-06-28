@@ -3,6 +3,51 @@ import { AppProject } from "@/types/projects";
 const apps: AppProject[] = [
   {
     id: 1,
+    title: "AiVory",
+    slug: "aivory",
+    description: "A modern AI workflow builder for companies to fully integrate their business with AI .",
+    coverImage: "/assets/images/projects/apps/aivory/cover.jpg",
+    gallery: [
+      "/assets/images/projects/apps/aivory/1.jpg",
+      "/assets/images/projects/apps/aivory/2.jpg",
+    ],
+    tags: ["AI", "Workflow", "Web"],
+    releaseDate: "2024-04-10",
+    isFeatured: true,
+    platform: ["Web"],
+  },
+  {
+    id: 2,
+    title: "Minor Hockey Talks",
+    slug: "minorhockeytalks",
+    description: "A modern sport community blog and news for Hockey.",
+    coverImage: "/assets/images/projects/apps/minorHockeytalks/cover.jpg",
+    gallery: [
+      "/assets/images/projects/apps/minorHockeytalks/1.jpg",
+      "/assets/images/projects/apps/minorHockeytalks/2.jpg",
+    ],
+    tags: ["Community", "Sport", "Web"],
+    releaseDate: "2024-04-10",
+    isFeatured: true,
+    platform: ["Web"],
+  },
+  {
+    id: 3,
+    title: "AddressBali",
+    slug: "addressbali",
+    description: "An apartment service and management in Bali.",
+    coverImage: "/assets/images/projects/apps/addressBali/cover.jpg",
+    gallery: [
+      "/assets/images/projects/apps/addressBali/1.jpg",
+      "/assets/images/projects/apps/addressBali/2.jpg",
+    ],
+    tags: ["Property", "Management", "Web"],
+    releaseDate: "2024-04-10",
+    isFeatured: true,
+    platform: ["Web"],
+  },
+  {
+    id: 4,
     title: "TaskFlow",
     slug: "taskFlow",
     description: "A modern task manager app for teams.",
@@ -17,7 +62,7 @@ const apps: AppProject[] = [
     platform: ["Web", "iOS", "Android"],
   },
   {
-    id: 2,
+    id: 5,
     title: "FinTrack",
     slug: "finTrack",
     description: "Personal finance tracking made easy.",
@@ -31,7 +76,7 @@ const apps: AppProject[] = [
     platform: ["Web", "Android"],
   },
   {
-    id: 3,
+    id: 6,
     title: "EduSpark",
     slug: "eduSpark",
     description: "Interactive learning platform for students.",
@@ -45,7 +90,7 @@ const apps: AppProject[] = [
     platform: ["Web"],
   },
   {
-    id: 4,
+    id: 7,
     title: "FitMate",
     slug: "fitMate",
     description: "A fitness tracker and virtual coach.",
@@ -58,7 +103,7 @@ const apps: AppProject[] = [
     platform: ["iOS", "Android"],
   },
   {
-    id: 5,
+    id: 8,
     title: "Cookpedia",
     slug: "cookpedia",
     description: "Browse, save, and share your favorite recipes.",

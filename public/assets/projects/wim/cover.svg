@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0f172a"/>
+  <rect x="50" y="50" width="700" height="350" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="400" y="200" text-anchor="middle" fill="#06b6d4" font-family="monospace" font-size="36" font-weight="bold">WIM System</text>
+  <text x="400" y="240" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="16">National IoT Infrastructure</text>
+  <line x1="200" y1="320" x2="600" y2="320" stroke="#06b6d4" stroke-width="2" opacity="0.4"/>
+  <circle cx="250" cy="320" r="5" fill="#06b6d4" opacity="0.7"/>
+  <circle cx="350" cy="320" r="5" fill="#06b6d4" opacity="0.7"/>
+  <circle cx="450" cy="320" r="5" fill="#06b6d4" opacity="0.7"/>
+  <circle cx="550" cy="320" r="5" fill="#06b6d4" opacity="0.7"/>
+</svg>
